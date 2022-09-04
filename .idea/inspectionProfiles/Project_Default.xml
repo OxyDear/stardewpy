@@ -1,0 +1,65 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyBroadExceptionInspection" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="PyChainedComparisonsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoreConstantInTheMiddle" value="true" />
+    </inspection_tool>
+    <inspection_tool class="PyGlobalUndefinedInspection" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="12">
+            <item index="0" class="java.lang.String" itemvalue="discord-py-interactions" />
+            <item index="1" class="java.lang.String" itemvalue="pygame" />
+            <item index="2" class="java.lang.String" itemvalue="wheel" />
+            <item index="3" class="java.lang.String" itemvalue="setuptools" />
+            <item index="4" class="java.lang.String" itemvalue="frozenlist" />
+            <item index="5" class="java.lang.String" itemvalue="PyNaCl" />
+            <item index="6" class="java.lang.String" itemvalue="pip" />
+            <item index="7" class="java.lang.String" itemvalue="utils" />
+            <item index="8" class="java.lang.String" itemvalue="discord-py-slash-command" />
+            <item index="9" class="java.lang.String" itemvalue="typing_extensions" />
+            <item index="10" class="java.lang.String" itemvalue="lavalink" />
+            <item index="11" class="java.lang.String" itemvalue="aiosignal" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8Inspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="E501" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+          <option value="N802" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="sum" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyUnboundLocalVariableInspection" enabled="true" level="INFORMATION" enabled_by_default="true" />
+    <inspection_tool class="PyUnresolvedReferencesInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredIdentifiers">
+        <list>
+          <option value="tuple.__sub__" />
+          <option value="list.reversed" />
+          <option value="float.index" />
+          <option value="main.num2t4ru" />
+          <option value="speech_recognition" />
+          <option value="main.*" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
