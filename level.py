@@ -21,31 +21,52 @@ class Level:
 
         for layer in ['HouseFloor', 'HouseFurnitureBottom']:
             for x, y, surf in tmx_data.get_layer_by_name(layer).tiles():
-                Generic((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites, LAYERS['house bottom'])
+                Generic(pos=(x * TILE_SIZE, y * TILE_SIZE),
+                        surf=surf,
+                        groups=self.all_sprites,
+                        z=LAYERS['house bottom'])
 
         for layer in ['HouseWalls', 'HouseFurnitureTop']:
             for x, y, surf in tmx_data.get_layer_by_name(layer).tiles():
-                Generic((x * TILE_SIZE, y * TILE_SIZE), surf, self.all_sprites, LAYERS['main'])
+                Generic(pos=(x * TILE_SIZE, y * TILE_SIZE),
+                        surf=surf,
+                        groups=self.all_sprites,
+                        z=LAYERS['main'])
 
         for x, y, surf in tmx_data.get_layer_by_name('Fence').tiles():
-            Generic((x * TILE_SIZE, y * TILE_SIZE), surf, [self.all_sprites, self.collision_sprites])
+            Generic(pos=(x * TILE_SIZE, y * TILE_SIZE),
+                    surf=surf,
+                    groups=[self.all_sprites, self.collision_sprites])
 
         water_frames = import_folder('C:/Users/User001/PycharmProjects/StardewValley/graphics/water')
         for x, y, surf in tmx_data.get_layer_by_name('Water').tiles():
-            Water((x * TILE_SIZE, y * TILE_SIZE), water_frames, self.all_sprites)
+            Water(pos=(x * TILE_SIZE, y * TILE_SIZE),
+                  frames=water_frames,
+                  groups=self.all_sprites)
 
         for obj in tmx_data.get_layer_by_name('Trees'):
-            Tree((obj.x, obj.y), obj.image, [self.all_sprites, self.collision_sprites, self.tree_sprites], obj.name)
+            Tree(pos=(obj.x, obj.y),
+                 surf=obj.image,
+                 groups=[self.all_sprites, self.collision_sprites, self.tree_sprites],
+                 name=obj.name,
+                 player_add=self.player_add)
 
         for obj in tmx_data.get_layer_by_name('Decoration'):
-            WildFlowers((obj.x, obj.y), obj.image, [self.all_sprites, self.collision_sprites])
+            WildFlowers(pos=(obj.x, obj.y),
+                        surf=obj.image,
+                        groups=[self.all_sprites, self.collision_sprites])
 
         for obj in tmx_data.get_layer_by_name('Player'):
             if obj.name == 'Start':
-                self.player = Player((obj.x, obj.y), self.all_sprites, self.collision_sprites, self.tree_sprites)
+                self.player = Player(pos=(obj.x, obj.y),
+                                     group=self.all_sprites,
+                                     collision_sprites=self.collision_sprites,
+                                     tree_sprites=self.tree_sprites)
 
         for x, y, surf in tmx_data.get_layer_by_name('Collision').tiles():
-            Generic((x * TILE_SIZE, y * TILE_SIZE), pygame.Surface((TILE_SIZE, TILE_SIZE)), self.collision_sprites)
+            Generic(pos=(x * TILE_SIZE, y * TILE_SIZE),
+                    surf=pygame.Surface((TILE_SIZE, TILE_SIZE)),
+                    groups=self.collision_sprites)
 
         Generic(pos=(0, 0),
                 surf=pygame.image.load(
@@ -53,11 +74,15 @@ class Level:
                 groups=self.all_sprites,
                 z=LAYERS['ground'])
 
+    def player_add(self, item):
+        self.player.item_inventory[item] += 1
+
     def run(self, dt):
         self.display_surface.fill('black')
         self.all_sprites.custom_draw(self.player)
         self.all_sprites.update(dt)
         self.overlay.display()
+        print(self.player.item_inventory)
 
 
 class CameraGroup(pygame.sprite.Group):
